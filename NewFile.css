@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Custom styles for this template -->
+    <link href="./css/custom.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- MAIN (Center website) -->
+<div class="main">
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNavRight">
+	   <span class="d-none d-lg-block">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+        </span>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">Interests</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+<h1 class="main-title">Sonal Gupta,</h1> <p class="dev">Senior Software Developer(Java)</p> 
+<hr>
+
+<h2 class="main-title-Subtex">PORTFOLIO</h2>
+
+
+<div class="top-container">
+<!-- Portfolio Gallery Grid -->
+<div class="col-container">
+  <div class="col firstMargin">
+<div class="content">
+     <img src="img/about.jpg" alt="about" style="max-height: 170px;">
+      <h3>About</h3>
+      <p>Working with Epsilon, India as Senior Software Developer</p>
+      <p>sonalgupta06cs@gmail.com </p>
+      </div>
+  </div>
+
+  <div class="col">
+    <div class="content MarginBottomDownDash">
+    <img src="img/hobbies.jpg" alt="Hobbies" style="max-height: 170px;">
+     <h3>Interests</h3>
+      <ul>
+        <li>Playing Badminton</li>
+        <li>Reading Books</li>
+        <li>Cooking New Dishes</li>
+        <li>Chatting with Friends</li>
+      </ul>
+      <br>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="content">
+    <img src="img/education.jpg" alt="Education" style="max-height: 170px;">
+      <h3>Education</h3>
+      <p>Bachelor of Engineering in Computer Science, 2010</p>
+      <p>Dr.BR Ambedkar University, Agra, UP</p>
+       </div>
+  </div>
+
+  <div class="col">
+    <div class="content marginBottomDown">
+    <img src="img/wrk_exp.jpg" alt="Experience" style="max-height: 170px;">
+      <h3>Experience</h3>
+      <p>Experience in application development, maintenance
+experience of enterprise application.</p>
+   <br>
+ </div>
+  </div>
+<!-- END GRID -->
+</div>
+</div>
+
+<div class="content">
+  <img src="img/projects.jpg" alt="Projects" style="width:50%">
+  <h3>Skills & Projects</h3>
+  <h3 class="designHeading">a.) Senior Developer, Epsilon</h3> 
+  <p class="designText"> Project "FeDex Rewards” is aimed at providing the rewards (Points) at the completion of required shipments</p>
+   <h3 class="designHeading">b.) Senior Software Engineer, Baxter India Pvt. Ltd</h3>
+  <p class="designText"> Project "Dashboard" was aimed at providing the users/Employees to see the
+WO/Incident status and also allowed them to create activities performed (daily/weekly/monthly) and updating the status.</p>
+  <h3 class="designHeading">c.) Lead Application Developer, Stesalit Limited</h3>
+  <p class="designText"> Project "MC (Municipal Corporation)" 
+    • Handling of Login and Logout Modules
+    • Needed to authenticate the admin and employees and give them the functionality, according to their specific departments,
+</p>
+</div>
+
+<div class="fxg-copyright">         <div class="fxg-wrapper container">           <div class="column_control">              <div class="row">               <!-- 2 Columns -->                <div class="fxg-col fxg-col-- fxg-col-- col-sm-4">                  <div class="title">                   <div class="fxg-title fxg-title--default" style="text-align: left;">© FedEx 1995-2018                     </div>                  </div>                </div>                <div class="row">                                        <!-- 2 Columns -->                                <div class="fxg-col fxg-col-- fxg-col--  ">                                    <div class="link section">                                        <a href="http://www.fedex.com/us/customersupport/email/index.html" alt="Feedback" target="_self" class="fxg-link default fxg-copyright-feedback-link    ">Feedback</a>                                        <span class="fxg-link__separator    "> | </span>                                    </div>                                </div>                                <div class="fxg-col fxg-col-- fxg-col--  ">                                    <div class="link section">                                        <a href="http://www.fedex.com/us/sitemap.html" alt="Site Map" target="_self" class="fxg-link default     ">Site Map</a>                                        <span class="fxg-link__separator    "> | </span>                                    </div>                                    <div class="link section">                                        <a href="http://www.fedex.com/us/legal/" alt="Terms of Use" target="_self" class="fxg-link default     ">Terms of Use</a>                                        <span class="fxg-link__separator    "> | </span>                                    </div>                                    <div class="link section">                                        <a href="http://www.fedex.com/us/security/index.html" alt="Security &amp; Privacy" target="_self" class="fxg-link default     ">Security &amp; Privacy</a>                                        </div>                                </div>                                                </div>             </div>            </div>            <!-- COLUMN CONTROL END -->         </div>        </div>
+
+<!-- END MAIN -->
+</div>
+
+</body>
+</html>

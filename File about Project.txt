@@ -1,0 +1,121 @@
+
+a.) When our spring boot application starts loading up, so for any class to receive HTTP request, we have to mark that class with @RestController Annotation.
+b.) @RestController Annotation will register this class as rest controller & it will be able to receive HTTP request & then match the request URL pattern using 
+    @RequestMapping Annotation.
+c.) When HTTP request is sent, that is always sent to a certain URL, that URL contains some path 
+d.) We will be creating a controller that has to do the operations with user, creating a new user for our mobile application, updating the user details or
+    deleting the user details, so UserController is responsible for all these operations, so our URL should refelct that.
+e.) When I send HTTP request to one of the methods defined in UserController // http://localhost:8080/users/{methodToCall} - to perform specific user related operation.
+
+
+
+
+
+
+f.) Once we save the pom.xml after putting some dependencies, and we build the project, Maven will go to its own repositry and will take these new added dependencies & it will     
+    download the libraries, and add them to the list of dependencies.  	
+	
+g.) We can use application.properties file to add different properties that your code can read from. 
+
+h.) To add database connection details, Spring Data JPA to connect to Database, we should provide the connection details to our database, it would need to know username,
+    password and database name.
+    
+    
+    
+--  Run your project using Maven Command Line:-
+a.) Goto the location of your project    
+b.) Goto Command prompt and navigate to that location
+c.) make sure when you list down the files, you see the pom.xml
+d.) Now we can run the application using maven command without using spring tool suite
+--    How to install ojdbc6.jar in your local maven repository
+      mvn install:install-file -Dfile=C:\ojdbc6.jar -DgroupId=oracle -DartifactId=oracle -Dversion=11.2.0.3 -Dpackaging=jar
+e.) Firstly, build the project using "mvn install" command, which will compile and build the project and
+    also, it will run the unit test and also it generates the deployable file which we can take and run the 
+    application either on local computer or upload to the remote server and run it there.
+    mvn install -DskipTests  => to skip the tests
+f.) now run
+    "mvn spring-boot:run"
+    This command will run my restful web services in apache tomcat servlet container.    
+    
+    
+-- Run your application as standalone application using maven:-
+a.) Build your project with mvn install command and then Pick .war file from target folder.
+b.) GO to that location from command line.
+c.) java -jar {nameofjar.jar} 
+
+-- Running your web services application without maven:-
+a.) Build your project with mvn install command
+b.) Upload the deployable file to a production server
+c.) Run application with java -jar <file name> command    
+
+-- How to package our spring boot application in a web archive file
+a.) sometimes we need to have a simple web application archive and then deploy that to war into existing
+    tomcat servlet container which already runs and has many others projects deployed to it.
+b.) How to package our spring boot application in a web application archive file
+c.) Then you can use that war file to deploy it into a standalone runnning apache tomcat server.
+d.) You woild have to make some changes in your code.  
+e.) Get a war file and deploy it to Tomcat.  
+
+Deployment on AWS:-
+Connect to EC2 linux server instance using SSH:-
+    /* ssh ec2-user@ec2-13-232-9-151.ap-south-1.compute.amazonaws.com
+    ssh -i PhotoAppEC2Server.pem ec2-user@ec2-13-232-9-151.ap-south-1.compute.amazonaws.com
+    Change the permission:-
+    on Windows you can do right mouse click and then change permission on this file to Read only.*/ - error
+    
+Connected using putty:-
+a.) created a ppk file out of pem file using puttykeygen
+b.) connected using putty
+c.) sudo yum update
+d.) say yes
+
+Install Java latest version which you need:-
+e.) java -version if 7 update
+f.) yum list java*
+g.) sudo yum install java-1.8.0    
+h.) sudo /usr/sbin/alternatives --config java
+i.) sudo /usr/sbin/alternatives --config javac
+
+Install Apache Tomcat on Linux server:-
+a.) yum list tomcat*
+b.) sudo yum install tomcat8
+c.) Tomcat GUI to deploy n updeploy -->  sudo yum install tomcat8-admin-webapps
+e.) start tomcat --> sudo service tomcat8 start/stop/restart
+f.) pick public dns name :- ec2-13-233-255-135.ap-south-1.compute.amazonaws.com:8080 - since tomcat is running on 8080
+g.) ec2-13-233-255-135.ap-south-1.compute.amazonaws.com:8080/manager/html
+h.) 403 Access Denied
+i.) find tomcat conf files using -->  whereis tomcat8
+                                      cd /usr/share/tomcat8
+                                      ls
+                                      cd conf
+                                      ls
+                                      edit-> sudo vi tomcat-users.xml
+                                      use arror key to go up n down, press O and then edit
+                                      <role rolename="manager-gui"/>
+									  <user username="tomcat" password="tomcat" roles="manager-gui"/>
+									  press :wq  --> which will save the contents
+									  
+									  add code in context.xml, to go back cd -
+							
+									  ⁨<Tomcat Home> ▸ ⁨webapps⁩ ▸ ⁨manager⁩ ▸ ⁨META-INF⁩
+									  goto context.xml--> sudo vi context.xml
+										<Context privileged="true" antiResourceLocking="false"
+										 docBase="${catalina.home}/webapps/manager">
+										 <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="^.*$" />
+										 </Context>
+ 
+Install mysql server:-
+a.) sudo yum install mysql-server
+b.) sudo service mysqld start
+c.) sudo service mysqld status
+d.) sudo /usr/bin/mysql_secure_installation    ->  root password:- mysql        
+e.) prompt yes for all further options
+f.) connect to mysql db now:-
+    mysql -u root -p -> enter ur password    
+    
+    
+Create Database and database user:-
+a.) create database photo_app;
+b.) create user 'sonal'@'localhost' identified by 'sonal'      
+c.) grant all privileges on photo_app.* to 'sonal@localhost';
+         
