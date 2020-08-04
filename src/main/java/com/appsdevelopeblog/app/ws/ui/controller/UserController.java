@@ -24,6 +24,9 @@ import com.appsdevelopeblog.app.ws.service.AddressService;
 import com.appsdevelopeblog.app.ws.service.UserService;
 import com.appsdevelopeblog.app.ws.shared.dto.AddressDTO;
 import com.appsdevelopeblog.app.ws.shared.dto.UserDto;
+import com.appsdevelopeblog.app.ws.ui.mapper.UserDtoToUserRestMapper;
+import com.appsdevelopeblog.app.ws.ui.model.request.PasswordResetModel;
+import com.appsdevelopeblog.app.ws.ui.model.request.PasswordResetRequestModel;
 import com.appsdevelopeblog.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.appsdevelopeblog.app.ws.ui.model.response.AddressesRest;
 import com.appsdevelopeblog.app.ws.ui.model.response.ErrorMessages;
@@ -37,7 +40,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "users") // http://localhost:8888/users
+@RequestMapping("/users") // http://localhost:8888/users
 public class UserController {
 
 	@Autowired
@@ -51,7 +54,7 @@ public class UserController {
 	 * service end point, then web service end point(i.e. our method) would have to
 	 * accept this information and convert this json payload into java object.Then,
 	 * we can use this java object to persist into the data base. So, Framework
-	 * would automatically do this conversion from json to java n java to json
+	 * would automatically do this conversion from son to java n java to json
 	 * automatically. Simply, create a pojo class with those incoming fields in
 	 * json.
 	 * 
@@ -122,6 +125,43 @@ public class UserController {
 		return userResponse;
 
 	}
+	
+	//TODO: - New- Send email to a user saying that email() has been created.
+	@PostMapping(path="/sendEmail")
+	public String sendEmail(@RequestBody String email) {
+		
+		
+		return email;		
+	}
+	
+	//TODO: - New- Get all the users
+	@GetMapping(path="/getAllUsers", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public List<UserRest> getAllUsers() {
+
+		List<UserDto> userdtoList = userService.getAllUsers();
+		
+		List<UserRest> userResponseList = new ArrayList<>();
+		for(UserDto user : userdtoList) {
+			UserRest userModel = new UserRest();
+		 	BeanUtils.copyProperties(user, userModel); 
+		 	userResponseList.add(userModel); 
+		 }
+		    return userResponseList;
+	}
+	
+	//TODO: - New- Download all the users in an excel
+	@PostMapping(produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public UserRest downloadAllUsersListinExcel(@PathVariable String id) {
+
+
+		UserDto userdto = userService.getUserByUserId(id);
+		//BeanUtils.copyProperties(userdto, userResponse);
+		ModelMapper mapper = new ModelMapper();
+		UserRest userResponse = mapper.map(userdto, UserRest.class);
+
+		return userResponse;
+
+	}	
 
 	/*
 	 * We will make this method to respond to GET Request We will bind this method
@@ -147,12 +187,10 @@ public class UserController {
 	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public UserRest getUser(@PathVariable String id) { // http://localhost:8888/users/{id} - GET Method
 
-
 		UserDto userdto = userService.getUserByUserId(id);
-		//BeanUtils.copyProperties(userdto, userResponse);
-		ModelMapper mapper = new ModelMapper();
-		UserRest userResponse = mapper.map(userdto, UserRest.class);
 
+		UserRest userResponse = UserDtoToUserRestMapper.INSTANCE.toUserRest(userdto);
+		
 		return userResponse;
 
 	}
@@ -194,25 +232,25 @@ public class UserController {
 	}
 
 	// Method to handle the pagination call to limit the users retrieved from the db
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "authorization", value = "${userController.authorizationHeader.description}", paramType = "header") })
-	@GetMapping(produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public List<UserRest> getUserPagination(@RequestParam(value = "page", defaultValue = "0") int page,
-			@RequestParam(value = "limit", defaultValue = "25") int limit) {
-
-		List<UserRest> userResponseList = new ArrayList<>();
-
-		List<UserDto> userdtoList = userService.getUsers(page, limit);
-
-		for (UserDto user : userdtoList) {
-			UserRest userModel = new UserRest();
-			BeanUtils.copyProperties(user, userModel);
-			userResponseList.add(userModel);
-		}
-
-		return userResponseList;
-
-	}
+//	@ApiImplicitParams({
+//			@ApiImplicitParam(name = "authorization", value = "${userController.authorizationHeader.description}", paramType = "header") })
+//	@GetMapping(produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+//	public List<UserRest> getUserPagination(@RequestParam(value = "page", defaultValue = "0") int page,
+//			@RequestParam(value = "limit", defaultValue = "25") int limit) {
+//
+//		List<UserRest> userResponseList = new ArrayList<>();
+//
+//		List<UserDto> userdtoList = userService.getUsers(page, limit);
+//
+//		for (UserDto user : userdtoList) {
+//			UserRest userModel = new UserRest();
+//			BeanUtils.copyProperties(user, userModel);
+//			userResponseList.add(userModel);
+//		}
+//
+//		return userResponseList;
+//
+//	}
 	
 	
 	// http://localhost:8889/mobile-app-ws/users/alhGELXjmNfQ9bBCZKnJKRp4ZlAjfg/addresses
@@ -247,26 +285,72 @@ public class UserController {
 	}
 	
 	
-	/**
-	 * Get All the users
-	 * 
-	 * @param id
-	 * @return
-	 */
-	/*
-	 * @GetMapping(produces= { MediaType.APPLICATION_XML_VALUE,
-	 * MediaType.APPLICATION_JSON_VALUE }) public List<UserRest> getAllUsers() {
-	 * 
-	 * List<UserRest> userResponseList = new ArrayList<>();
-	 * 
-	 * List<UserDto> userdtoList = userService.getAllUsers();
-	 * 
-	 * for(UserDto user : userdtoList) { UserRest userModel = new UserRest();
-	 * BeanUtils.copyProperties(user, userModel); userResponseList.add(userModel); }
-	 * 
-	 * return userResponseList;
-	 * 
-	 * }
-	 */
+	 /*
+     * http://localhost:8080/mobile-app-ws/users/email-verification?token=sdfsdf
+     * */
+    @GetMapping(path = "/email-verification", produces = { MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE })
+    public OperationStatusModel verifyEmailToken(@RequestParam(value = "token") String token) {
+
+        OperationStatusModel returnValue = new OperationStatusModel();
+        returnValue.setOperationName(RequestOperationName.VERIFY_EMAIL.name());
+        
+        boolean isVerified = userService.verifyEmailToken(token);
+        
+        if(isVerified)
+        {
+            returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
+        } else {
+            returnValue.setOperationResult(RequestOperationStatus.ERROR.name());
+        }
+
+        return returnValue;
+    }
+    
+	 /*
+     * http://localhost:8080/mobile-app-ws/users/password-reset-request
+     * */
+    @PostMapping(path = "/password-reset-request", 
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public OperationStatusModel requestReset(@RequestBody PasswordResetRequestModel passwordResetRequestModel) {
+    	OperationStatusModel returnValue = new OperationStatusModel();
+ 
+        boolean operationResult = userService.requestPasswordReset(passwordResetRequestModel.getEmail());
+        
+        returnValue.setOperationName(RequestOperationName.REQUEST_PASSWORD_RESET.name());
+        returnValue.setOperationResult(RequestOperationStatus.ERROR.name());
+ 
+        if(operationResult)
+        {
+            returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
+        }
+
+        return returnValue;
+    }
+    
+    
+    
+    @PostMapping(path = "/password-reset",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public OperationStatusModel resetPassword(@RequestBody PasswordResetModel passwordResetModel) {
+    	OperationStatusModel returnValue = new OperationStatusModel();
+ 
+        boolean operationResult = userService.resetPassword(
+                passwordResetModel.getToken(),
+                passwordResetModel.getPassword());
+        
+        returnValue.setOperationName(RequestOperationName.PASSWORD_RESET.name());
+        returnValue.setOperationResult(RequestOperationStatus.ERROR.name());
+ 
+        if(operationResult)
+        {
+            returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
+        }
+
+        return returnValue;
+    }
 
 }
