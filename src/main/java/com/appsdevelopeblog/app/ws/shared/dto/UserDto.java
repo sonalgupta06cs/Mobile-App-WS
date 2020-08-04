@@ -45,6 +45,4 @@ public class UserDto implements Serializable {
 	private Boolean emailVerificationStatus = false;
 	private LocalDate date;
 	private List<AddressDTO> addressesDto;
-	
-	private AddressDTO addressdto;
 }

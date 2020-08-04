@@ -11,11 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
@@ -45,8 +42,6 @@ public class AddressEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="Users_id")
-    @JsonBackReference
-    @ToString.Exclude
 	private UserEntity userDetails;
 
 }

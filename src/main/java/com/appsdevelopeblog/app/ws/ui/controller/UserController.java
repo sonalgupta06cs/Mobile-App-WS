@@ -4,9 +4,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +38,9 @@ import com.appsdevelopeblog.app.ws.ui.model.response.UserRest;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/users") // http://localhost:8888/users
 public class UserController {
@@ -115,12 +117,12 @@ public class UserController {
 		// BeanUtils does shallow object mapping, so lets try with ModelMapper.
 		//BeanUtils.copyProperties(userDetailsRequest, userDto);
 		
-		ModelMapper modelMapper = new ModelMapper();
-		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+		//ModelMapper modelMapper = new ModelMapper();
+		UserDto userDto = UserDtoToUserRestMapper.INSTANCE.toUserDTOFromUserModel(userDetails);
 
 		UserDto createdUser = userService.createUser(userDto);
 		//BeanUtils.copyProperties(createdUser, userResponse);
-		userResponse = modelMapper.map(createdUser, UserRest.class);
+		userResponse = UserDtoToUserRestMapper.INSTANCE.toUserRest(createdUser);
 
 		return userResponse;
 
@@ -138,15 +140,14 @@ public class UserController {
 	@GetMapping(path="/getAllUsers", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public List<UserRest> getAllUsers() {
 
-		List<UserDto> userdtoList = userService.getAllUsers();
+		List<UserDto> userdtoList = userService.getAllUsers();		
+		log.info("UsersRetrieved:{}", userdtoList.size());
 		
-		List<UserRest> userResponseList = new ArrayList<>();
-		for(UserDto user : userdtoList) {
-			UserRest userModel = new UserRest();
-		 	BeanUtils.copyProperties(user, userModel); 
-		 	userResponseList.add(userModel); 
-		 }
-		    return userResponseList;
+		List<UserRest> userResponseList = UserDtoToUserRestMapper.INSTANCE.toUserRest(userdtoList);
+		int searchCount = CollectionUtils.isNotEmpty(userResponseList) ? userResponseList.size() : 0 ;
+		log.info("Total elements searched:{}", searchCount);
+
+	    return userResponseList;
 	}
 	
 	//TODO: - New- Download all the users in an excel

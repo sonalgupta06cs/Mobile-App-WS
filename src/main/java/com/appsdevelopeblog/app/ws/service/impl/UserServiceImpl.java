@@ -3,7 +3,6 @@ package com.appsdevelopeblog.app.ws.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -60,9 +59,10 @@ public class UserServiceImpl implements UserService {
 			user.getAddressesDto().set(i, address);
 		}
 
-		// BeanUtils.copyProperties(user, userEntity);
-		ModelMapper modelMapper = new ModelMapper();
-		UserEntity userEntity = modelMapper.map(user, UserEntity.class);
+		UserEntity userEntity = UserDtoToUserRestMapper.INSTANCE.toUserEntity(user);
+			userEntity.getAddresses().forEach(entityAddress -> {
+				entityAddress.setUserDetails(userEntity);
+			});
 
 		String publicUserId = utils.generateUserId(30);
 		userEntity.setUserId(publicUserId);
@@ -71,9 +71,7 @@ public class UserServiceImpl implements UserService {
 		userEntity.setEmailVerificationStatus(Boolean.FALSE);
 
 		UserEntity storedUserDetails = userRepository.save(userEntity);
-
-		// BeanUtils.copyProperties(storedUserDetails, returnValue);
-		UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);
+		UserDto returnValue = UserDtoToUserRestMapper.INSTANCE.toUserDto(storedUserDetails);
 
 		// Send an email message to user to verify their email address
 		amazonSES.verifyEmail(returnValue);
@@ -193,25 +191,8 @@ public class UserServiceImpl implements UserService {
 		List<UserDto> userDtoList = new ArrayList<>();
 
 		List<UserEntity> usersRetrievedList = (List<UserEntity>) userRepository.findAll();
-
-		for(UserEntity user : usersRetrievedList) {
-			UserDto userModel = new UserDto();
-		 	BeanUtils.copyProperties(user, userModel); 
-		 	userDtoList.add(userModel); 
-		 }
-
-//		List<AddressDTO> addressDTOList = new ArrayList<>();
-//		usersRetrievedList.stream().forEach(user -> {
-//
-//			userDtoList.add(UserDtoToUserRestMapper.INSTANCE.toUserDto(user));
-//
-//			user.getAddresses().forEach(address -> {
-//				addressDTOList.add(UserDtoToUserRestMapper.INSTANCE.toAddressDTO(address));
-//			});
-//
-//		});
-
-		//addressDTOList.forEach(System.out::print);
+		
+		userDtoList = UserDtoToUserRestMapper.INSTANCE.toUserDtoList(usersRetrievedList);
 
 		return userDtoList;
 	}

@@ -12,11 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * @author SonaSach
@@ -73,7 +70,5 @@ public class UserEntity implements Serializable {
 	private Boolean emailVerificationStatus;
 	
 	@OneToMany(mappedBy="userDetails", cascade=CascadeType.ALL)
-	@JsonManagedReference
-	@ToString.Exclude
 	private List<AddressEntity> addresses;
 }
