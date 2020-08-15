@@ -2,7 +2,6 @@ package com.appsdevelopeblog.app.ws.ui.mapper;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -25,7 +24,9 @@ public interface UserDtoToUserRestMapper {
     UserDto toUserDto(UserEntity userEntity);
     List<UserDto> toUserDtoList(List<UserEntity> userDtoList);
     
-    @InheritInverseConfiguration
+    @Mappings({
+    	@Mapping(source = "addressesDto", target = "addresses")
+    })
     UserEntity toUserEntity(UserDto user);
     List<UserEntity> toUserEntityList(List<UserDto> user);
 
@@ -41,11 +42,4 @@ public interface UserDtoToUserRestMapper {
 	UserDto toUserDTOFromUserModel(UserDetailsRequestModel userDetails);
 	List<UserDto> toUserDTOFromUserModelList(List<UserEntity> userDtoList);
 	
-	
-	
-
-	
-	
-	
-
 }

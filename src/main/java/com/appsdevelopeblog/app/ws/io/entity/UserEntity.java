@@ -69,6 +69,6 @@ public class UserEntity implements Serializable {
 	//@org.hibernate.annotations.ColumnDefault("false")
 	private Boolean emailVerificationStatus;
 	
-	@OneToMany(mappedBy="userDetails", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="userDetails", cascade = CascadeType.ALL)
 	private List<AddressEntity> addresses;
 }

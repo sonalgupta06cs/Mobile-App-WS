@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.appsdevelopeblog.app.ws.entity.repositry.PasswordResetTokenRepository;
 import com.appsdevelopeblog.app.ws.entity.repositry.UserRepository;
@@ -32,21 +31,22 @@ import com.appsdevelopeblog.app.ws.ui.model.response.ErrorMessages;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	Utils utils;
+	private Utils utils;
 
 	@Autowired
-	BCryptPasswordEncoder bCryptPasswordEncoder;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
-	PasswordResetTokenRepository passwordResetTokenRepository;
+	private PasswordResetTokenRepository passwordResetTokenRepository;
 
 	@Autowired
-	AmazonSES amazonSES;
+	private AmazonSES amazonSES;
 
 	@Override
+	//@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public UserDto createUser(UserDto user) {
 
 		if (userRepository.findByEmail(user.getEmail()) != null)
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
 		for (int i = 0; i < user.getAddressesDto().size(); i++) {
 			AddressDTO address = user.getAddressesDto().get(i);
-			address.setUserDetailss(user);
+			//address.setUserDetailss(user);
 			address.setAddressId(utils.generateAddressId(30));
 			user.getAddressesDto().set(i, address);
 		}
@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
 		UserDto returnValue = UserDtoToUserRestMapper.INSTANCE.toUserDto(storedUserDetails);
 
 		// Send an email message to user to verify their email address
-		amazonSES.verifyEmail(returnValue);
+		//amazonSES.verifyEmail(returnValue);
 
 		return returnValue;
 	}
@@ -151,7 +151,7 @@ public class UserServiceImpl implements UserService {
 		return userFinalResponse;
 	}
 
-	@Transactional
+	//@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	@Override
 	public void deleteUser(String userId) {
 
@@ -166,33 +166,24 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserDto> getUsers(int page, int limit) {
 
-		List<UserDto> returnValue = new ArrayList<>();
-
-		if (page > 0)
-			page = page - 1;
+		if (page > 0) page = page - 1;
 
 		Pageable pageableRequest = PageRequest.of(page, limit);
 
 		Page<UserEntity> usersPage = userRepository.findAll(pageableRequest);
-		List<UserEntity> users = usersPage.getContent();
+		List<UserEntity> usersRetrievedList = usersPage.getContent();
+		
+		List<UserDto> userDtoList = UserDtoToUserRestMapper.INSTANCE.toUserDtoList(usersRetrievedList);
 
-		for (UserEntity userEntity : users) {
-			UserDto userDto = new UserDto();
-			BeanUtils.copyProperties(userEntity, userDto);
-			returnValue.add(userDto);
-		}
-
-		return returnValue;
+		return userDtoList;
 	}
 
 	@Override
 	public List<UserDto> getAllUsers() {
 
-		List<UserDto> userDtoList = new ArrayList<>();
-
 		List<UserEntity> usersRetrievedList = (List<UserEntity>) userRepository.findAll();
 		
-		userDtoList = UserDtoToUserRestMapper.INSTANCE.toUserDtoList(usersRetrievedList);
+		List<UserDto> userDtoList = UserDtoToUserRestMapper.INSTANCE.toUserDtoList(usersRetrievedList);
 
 		return userDtoList;
 	}

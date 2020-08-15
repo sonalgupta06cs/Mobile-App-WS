@@ -20,7 +20,6 @@ import lombok.Setter;
 @Table(name="addresses")
 public class AddressEntity implements Serializable {
 
-
 	private static final long serialVersionUID = -4548580172612765118L;
 	
 	@Id

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -23,14 +22,16 @@ import com.appsdevelopeblog.app.ws.io.entity.UserEntity;
  * With Spring Data JPA framework, it becomes really easier to perform the db crud operations.
  * We have to just pass the entity that needs to be persisted & the data type of the id.
  * 
- * So, Here, we dont need to provide any methods in order to be able to save, update, delete, create
+ * So, Here, we don't need to provide any methods in order to be able to save, update, delete, create
  * but if you want to implement the custom methods implementations 
  * like findUserBy, deleteUserbyPublicUserId, addUserByEmailAddress, findUserByEmailAddress 
+ * 
+ * Implementation of methods is done by spring at run time.
  * 
  * PagingAndSortingRepository is provided by Spring for pagination, like function findAll(Pageable)
  */
 @Repository
-public interface UserRepository extends  PagingAndSortingRepository<UserEntity, Long> {//CrudRepository<UserEntity, Long> {
+public interface UserRepository extends  PagingAndSortingRepository<UserEntity, Long> {
 	
 	//UserEntity findUserByEmailAdd(String email);
 	
