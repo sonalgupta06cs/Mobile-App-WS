@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.ui.model.request;
+package com.springboottest.app.ws.ui.model.request;
 
 public class PasswordResetModel {
 	private String token;

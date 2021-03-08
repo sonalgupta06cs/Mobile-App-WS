@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.io.entity;
+package com.springboottest.app.ws.io.entity;
 
 import java.io.Serializable;
 import java.util.List;

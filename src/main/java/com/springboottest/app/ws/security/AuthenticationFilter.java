@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.security;
+package com.springboottest.app.ws.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,10 +20,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.appsdevelopeblog.app.ws.SpringApplicationContext;
-import com.appsdevelopeblog.app.ws.service.UserService;
-import com.appsdevelopeblog.app.ws.shared.dto.UserDto;
-import com.appsdevelopeblog.app.ws.ui.model.request.UserLoginRequestModel;
+import com.springboottest.app.ws.SpringApplicationContext;
+import com.springboottest.app.ws.service.UserService;
+import com.springboottest.app.ws.shared.dto.UserDto;
+import com.springboottest.app.ws.ui.model.request.UserLoginRequestModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Jwts;

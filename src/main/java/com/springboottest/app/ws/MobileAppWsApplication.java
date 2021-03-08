@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws;
+package com.springboottest.app.ws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

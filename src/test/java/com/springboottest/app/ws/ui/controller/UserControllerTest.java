@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.ui.controller;
+package com.springboottest.app.ws.ui.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -15,11 +15,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.appsdevelopeblog.app.ws.service.impl.UserServiceImpl;
-import com.appsdevelopeblog.app.ws.shared.dto.AddressDTO;
-import com.appsdevelopeblog.app.ws.shared.dto.UserDto;
-import com.appsdevelopeblog.app.ws.ui.controller.UserController;
-import com.appsdevelopeblog.app.ws.ui.model.response.UserRest;
+import com.springboottest.app.ws.service.impl.UserServiceImpl;
+import com.springboottest.app.ws.shared.dto.AddressDTO;
+import com.springboottest.app.ws.shared.dto.UserDto;
+import com.springboottest.app.ws.ui.controller.UserController;
+import com.springboottest.app.ws.ui.model.response.UserRest;
 
 class UserControllerTest {
 

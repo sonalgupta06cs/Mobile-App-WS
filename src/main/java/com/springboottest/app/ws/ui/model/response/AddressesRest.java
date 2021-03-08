@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.ui.model.response;
+package com.springboottest.app.ws.ui.model.response;
 
 import org.springframework.hateoas.ResourceSupport;
 

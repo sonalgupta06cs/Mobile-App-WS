@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.shared.dto;
+package com.springboottest.app.ws.shared.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;

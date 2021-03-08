@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.security;
+package com.springboottest.app.ws.security;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.appsdevelopeblog.app.ws.service.UserService;
+import com.springboottest.app.ws.service.UserService;
 
 /**
  * @author SonaSach

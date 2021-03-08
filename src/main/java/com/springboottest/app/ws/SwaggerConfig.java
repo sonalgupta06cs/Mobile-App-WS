@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws;
+package com.springboottest.app.ws;
 
 import java.util.ArrayList;
 import java.util.Arrays;

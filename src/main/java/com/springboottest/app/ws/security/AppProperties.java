@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.security;
+package com.springboottest.app.ws.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

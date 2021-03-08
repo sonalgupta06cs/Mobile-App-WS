@@ -3,7 +3,7 @@
  * @author SonaSach
  *
  */
-package com.appsdevelopeblog.app.ws.shared.dto;
+package com.springboottest.app.ws.shared.dto;
 
 /**
  * This package will keep all the classes that serve as a data transfer objects.

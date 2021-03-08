@@ -3,7 +3,7 @@
  * @author SonaSach
  *
  */
-package com.appsdevelopeblog.app.ws.io.entity;
+package com.springboottest.app.ws.io.entity;
 
 
 /**

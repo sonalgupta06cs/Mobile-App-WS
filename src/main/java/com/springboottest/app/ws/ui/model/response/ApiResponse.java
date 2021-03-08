@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.ui.model.response;
+package com.springboottest.app.ws.ui.model.response;
 
 import java.io.Serializable;
 

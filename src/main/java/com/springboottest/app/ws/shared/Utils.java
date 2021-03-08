@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.shared;
+package com.springboottest.app.ws.shared;
 
 import java.security.SecureRandom;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
-import com.appsdevelopeblog.app.ws.security.SecurityConstants;
+import com.springboottest.app.ws.security.SecurityConstants;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

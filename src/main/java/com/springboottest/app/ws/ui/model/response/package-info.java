@@ -5,7 +5,7 @@
  * @author SonaSach
  *
  */
-package com.appsdevelopeblog.app.ws.ui.model.response;
+package com.springboottest.app.ws.ui.model.response;
 
 /*
  * This package would contain the classes which will be used by Framework to create a json payload which will be sent back to the calling client

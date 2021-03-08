@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.exceptions;
+package com.springboottest.app.ws.exceptions;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import com.appsdevelopeblog.app.ws.ui.model.response.CustomErrorJSONMessage;
+import com.springboottest.app.ws.ui.model.response.CustomErrorJSONMessage;
 
 /**
  * CLass to handle the exceptions thrown

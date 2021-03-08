@@ -5,7 +5,7 @@
  * @author SonaSach
  *
  */
-package com.appsdevelopeblog.app.ws.ui.model.request;
+package com.springboottest.app.ws.ui.model.request;
 
 /**
   * All the model classes being used to convert the incoming json payload to respective Java Object will be storing inside this .request package.

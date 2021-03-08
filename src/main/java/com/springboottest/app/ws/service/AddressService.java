@@ -1,11 +1,11 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.service;
+package com.springboottest.app.ws.service;
 
 import java.util.List;
 
-import com.appsdevelopeblog.app.ws.shared.dto.AddressDTO;
+import com.springboottest.app.ws.shared.dto.AddressDTO;
 
 /**
  * @author SonaSach

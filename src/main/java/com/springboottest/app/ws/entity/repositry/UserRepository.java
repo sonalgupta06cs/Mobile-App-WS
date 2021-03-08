@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.entity.repositry;
+package com.springboottest.app.ws.entity.repositry;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.appsdevelopeblog.app.ws.io.entity.UserEntity;
+import com.springboottest.app.ws.io.entity.UserEntity;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.service.impl;
+package com.springboottest.app.ws.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +14,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.appsdevelopeblog.app.ws.entity.repositry.PasswordResetTokenRepository;
-import com.appsdevelopeblog.app.ws.entity.repositry.UserRepository;
-import com.appsdevelopeblog.app.ws.exceptions.UserServiceExceptions;
-import com.appsdevelopeblog.app.ws.io.entity.PasswordResetTokenEntity;
-import com.appsdevelopeblog.app.ws.io.entity.UserEntity;
-import com.appsdevelopeblog.app.ws.service.UserService;
-import com.appsdevelopeblog.app.ws.shared.AmazonSES;
-import com.appsdevelopeblog.app.ws.shared.Utils;
-import com.appsdevelopeblog.app.ws.shared.dto.AddressDTO;
-import com.appsdevelopeblog.app.ws.shared.dto.UserDto;
-import com.appsdevelopeblog.app.ws.ui.mapper.UserDtoToUserRestMapper;
-import com.appsdevelopeblog.app.ws.ui.model.response.ErrorMessages;
+import com.springboottest.app.ws.entity.repositry.PasswordResetTokenRepository;
+import com.springboottest.app.ws.entity.repositry.UserRepository;
+import com.springboottest.app.ws.exceptions.UserServiceExceptions;
+import com.springboottest.app.ws.io.entity.PasswordResetTokenEntity;
+import com.springboottest.app.ws.io.entity.UserEntity;
+import com.springboottest.app.ws.service.UserService;
+import com.springboottest.app.ws.shared.AmazonSES;
+import com.springboottest.app.ws.shared.Utils;
+import com.springboottest.app.ws.shared.dto.AddressDTO;
+import com.springboottest.app.ws.shared.dto.UserDto;
+import com.springboottest.app.ws.ui.mapper.UserDtoToUserRestMapper;
+import com.springboottest.app.ws.ui.model.response.ErrorMessages;
 
 @Service
 public class UserServiceImpl implements UserService {

@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.security;
+package com.springboottest.app.ws.security;
 
-import com.appsdevelopeblog.app.ws.SpringApplicationContext;
+import com.springboottest.app.ws.SpringApplicationContext;
 
 /**
  * @author SonaSach

@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.shared;
+package com.springboottest.app.ws.shared;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.appsdevelopeblog.app.ws.shared.Utils;
+import com.springboottest.app.ws.shared.Utils;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

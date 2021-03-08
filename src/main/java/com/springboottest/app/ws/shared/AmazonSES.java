@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.shared;
+package com.springboottest.app.ws.shared;
 
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import com.amazonaws.services.simpleemail.model.Destination;
 import com.amazonaws.services.simpleemail.model.Message;
 import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 import com.amazonaws.services.simpleemail.model.SendEmailResult;
-import com.appsdevelopeblog.app.ws.shared.dto.UserDto;;
+import com.springboottest.app.ws.shared.dto.UserDto;;
  
 @Service
 public class AmazonSES {

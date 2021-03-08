@@ -3,7 +3,7 @@
  * @author SonaSach
  *
  */
-package com.appsdevelopeblog.app.ws.service.impl;
+package com.springboottest.app.ws.service.impl;
 
 
 /**

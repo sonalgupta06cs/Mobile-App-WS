@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.exceptions;
+package com.springboottest.app.ws.exceptions;
 
 /**
  * @author SonaSach

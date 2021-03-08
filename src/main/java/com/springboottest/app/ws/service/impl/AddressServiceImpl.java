@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.appsdevelopeblog.app.ws.service.impl;
+package com.springboottest.app.ws.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +10,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.appsdevelopeblog.app.ws.entity.repositry.AddressRepository;
-import com.appsdevelopeblog.app.ws.entity.repositry.UserRepository;
-import com.appsdevelopeblog.app.ws.io.entity.AddressEntity;
-import com.appsdevelopeblog.app.ws.io.entity.UserEntity;
-import com.appsdevelopeblog.app.ws.service.AddressService;
-import com.appsdevelopeblog.app.ws.shared.dto.AddressDTO;
+import com.springboottest.app.ws.entity.repositry.AddressRepository;
+import com.springboottest.app.ws.entity.repositry.UserRepository;
+import com.springboottest.app.ws.io.entity.AddressEntity;
+import com.springboottest.app.ws.io.entity.UserEntity;
+import com.springboottest.app.ws.service.AddressService;
+import com.springboottest.app.ws.shared.dto.AddressDTO;
 
 /**
  * @author SonaSach

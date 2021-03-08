@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.service.impl;
+package com.springboottest.app.ws.service.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -25,15 +25,15 @@ import org.modelmapper.TypeToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.appsdevelopeblog.app.ws.entity.repositry.UserRepository;
-import com.appsdevelopeblog.app.ws.exceptions.UserServiceExceptions;
-import com.appsdevelopeblog.app.ws.io.entity.AddressEntity;
-import com.appsdevelopeblog.app.ws.io.entity.UserEntity;
-import com.appsdevelopeblog.app.ws.service.impl.UserServiceImpl;
-import com.appsdevelopeblog.app.ws.shared.AmazonSES;
-import com.appsdevelopeblog.app.ws.shared.Utils;
-import com.appsdevelopeblog.app.ws.shared.dto.AddressDTO;
-import com.appsdevelopeblog.app.ws.shared.dto.UserDto;
+import com.springboottest.app.ws.entity.repositry.UserRepository;
+import com.springboottest.app.ws.exceptions.UserServiceExceptions;
+import com.springboottest.app.ws.io.entity.AddressEntity;
+import com.springboottest.app.ws.io.entity.UserEntity;
+import com.springboottest.app.ws.service.impl.UserServiceImpl;
+import com.springboottest.app.ws.shared.AmazonSES;
+import com.springboottest.app.ws.shared.Utils;
+import com.springboottest.app.ws.shared.dto.AddressDTO;
+import com.springboottest.app.ws.shared.dto.UserDto;
 
 class UserServiceImplTest {
 

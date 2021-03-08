@@ -1,4 +1,4 @@
-package com.appsdevelopeblog.app.ws.ui.controller;
+package com.springboottest.app.ws.ui.controller;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
@@ -25,21 +25,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.appsdevelopeblog.app.ws.exceptions.UserServiceExceptions;
-import com.appsdevelopeblog.app.ws.service.AddressService;
-import com.appsdevelopeblog.app.ws.service.UserService;
-import com.appsdevelopeblog.app.ws.shared.dto.AddressDTO;
-import com.appsdevelopeblog.app.ws.shared.dto.UserDto;
-import com.appsdevelopeblog.app.ws.ui.mapper.UserDtoToUserRestMapper;
-import com.appsdevelopeblog.app.ws.ui.model.request.PasswordResetModel;
-import com.appsdevelopeblog.app.ws.ui.model.request.PasswordResetRequestModel;
-import com.appsdevelopeblog.app.ws.ui.model.request.UserDetailsRequestModel;
-import com.appsdevelopeblog.app.ws.ui.model.response.AddressesRest;
-import com.appsdevelopeblog.app.ws.ui.model.response.ErrorMessages;
-import com.appsdevelopeblog.app.ws.ui.model.response.OperationStatusModel;
-import com.appsdevelopeblog.app.ws.ui.model.response.RequestOperationName;
-import com.appsdevelopeblog.app.ws.ui.model.response.RequestOperationStatus;
-import com.appsdevelopeblog.app.ws.ui.model.response.UserRest;
+import com.springboottest.app.ws.exceptions.UserServiceExceptions;
+import com.springboottest.app.ws.service.AddressService;
+import com.springboottest.app.ws.service.UserService;
+import com.springboottest.app.ws.shared.dto.AddressDTO;
+import com.springboottest.app.ws.shared.dto.UserDto;
+import com.springboottest.app.ws.ui.mapper.UserDtoToUserRestMapper;
+import com.springboottest.app.ws.ui.model.request.PasswordResetModel;
+import com.springboottest.app.ws.ui.model.request.PasswordResetRequestModel;
+import com.springboottest.app.ws.ui.model.request.UserDetailsRequestModel;
+import com.springboottest.app.ws.ui.model.response.AddressesRest;
+import com.springboottest.app.ws.ui.model.response.ErrorMessages;
+import com.springboottest.app.ws.ui.model.response.OperationStatusModel;
+import com.springboottest.app.ws.ui.model.response.RequestOperationName;
+import com.springboottest.app.ws.ui.model.response.RequestOperationStatus;
+import com.springboottest.app.ws.ui.model.response.UserRest;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
